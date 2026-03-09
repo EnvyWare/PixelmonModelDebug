@@ -156,6 +156,9 @@ dependencies {
     // For more info:
     // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
     // http://www.gradle.org/docs/current/userguide/dependency_management.html
+
+
+    annotationProcessor 'org.spongepowered:mixin:0.8.3-SNAPSHOT:processor'
 }
 
 // This block of code expands all declared replace properties in the specified resource targets.
@@ -206,4 +209,12 @@ idea {
         downloadSources = true
         downloadJavadoc = true
     }
+}
+
+jar {
+    manifest.attributes(
+            'TweakClass': 'org.spongepowered.asm.launch.MixinTweaker',
+            'TweakOrder': 0,
+            'MixinConfigs' : "mixins.modeldebug.json"
+    )
 }

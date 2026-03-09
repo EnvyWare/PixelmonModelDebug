@@ -1,0 +1,11 @@
+{
+  "required": true,
+  "minVersion": "0.8.2",
+  "package": "uk.co.envyware.model.debug.mixin",
+  "target": "@env(DEFAULT)",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "MixinSMDModelLoader"
+  ],
+  "client": []
+}
