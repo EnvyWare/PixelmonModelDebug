@@ -78,7 +78,6 @@ public abstract class MixinAssimpRenderType {
             shader.safeGetUniform("overlay").set((short)(this.context.packedOverlay() & '\uffff'), (short)(this.context.packedOverlay() >> 16 & '\uffff'));
             shader.safeGetUniform("lighting").set((short)(this.context.packedLight() & '\uffff'), (short)(this.context.packedLight() >> 16 & '\uffff'));
             shader.apply();
-            ModelDebug.LOGGER.info("Attrib3 integer? {}", GL20.glGetVertexAttribi(3, GL30.GL_VERTEX_ATTRIB_ARRAY_INTEGER));
             GL30.glBindVertexArray(mesh.renderedObject().vaoId());
             GL11.glDrawElements(4, mesh.renderedObject().size(), 5125, 0L);
             GL30.glBindVertexArray(0);

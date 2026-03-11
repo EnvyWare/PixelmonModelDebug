@@ -110,24 +110,25 @@ public abstract class MixinMesh {
 
         glBindVertexArray(renderedObject.vaoId());
 
-        glEnableVertexAttribArray(0);
-        glEnableVertexAttribArray(1);
-        glEnableVertexAttribArray(2);
-        glEnableVertexAttribArray(3);
-        glEnableVertexAttribArray(4);
-
         vertexBuffers.add(bindBufferData(0, 3, vertexPositions));
+        glEnableVertexAttribArray(0);
+
         vertexBuffers.add(bindBufferData(1, 2, vertexTextureCoordinates));
+        glEnableVertexAttribArray(1);
+
         vertexBuffers.add(bindBufferData(2, 3, vertexNormals));
+        glEnableVertexAttribArray(2);
+
         vertexBuffers.add(bindBufferIntData(3, 4, vertexBoneIndices));
+        glEnableVertexAttribArray(3);
+
         vertexBuffers.add(bindBufferData(4, 4, vertexBoneWeights));
+        glEnableVertexAttribArray(4);
 
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indiceBuffer);
         glBufferData(GL_ELEMENT_ARRAY_BUFFER, BufferHelper.fromArray(vertexIndices), GL_STATIC_DRAW);
 
         glBindVertexArray(0);
-        vertexBuffers.forEach(GL15::glDeleteBuffers);
-        GL15.glDeleteBuffers(indiceBuffer);
     }
 
     private static int bindBufferIntData(int index, int size, int[] bufferData) {
