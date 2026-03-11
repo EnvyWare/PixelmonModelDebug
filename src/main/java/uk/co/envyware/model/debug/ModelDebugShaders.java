@@ -22,7 +22,6 @@ public class ModelDebugShaders {
 
     @SubscribeEvent
     public static void onRegisterShaders(RegisterShadersEvent event) {
-        ModelDebug.LOGGER.info("Registering custom shaders...");
         createShaderSafely(event,
                 () -> new ShaderInstance(event.getResourceProvider(), CUSTOM_SHADER, DefaultVertexFormat.NEW_ENTITY),
                 shader -> rendertypeEntitySmoothCutoutShader = shader
