@@ -59,30 +59,4 @@ public abstract class MixinAssimpRenderType {
             _drawWithShader(RenderSystem.getProjectionMatrix(), this.shader.get());
         }
     }
-
-
-    /**
-     * @author
-     * @reason
-     */
-    @Overwrite
-    private void draw(ShaderInstance shader) {
-        for(int meshId = 0; meshId < this.scene.meshes().size(); ++meshId) {
-            Mesh mesh = this.scene.meshes().get(meshId);
-            Material material = this.scene.materials().get(mesh.materialId());
-            this.setupBoneUniforms(meshId);
-            shader.safeGetUniform("u_textureOffset").set((float)material.uvOffset().x(), (float)material.uvOffset().y());
-            shader.safeGetUniform("u_textureScale").set((float)material.uvScale().x(), (float)material.uvScale().y());
-            shader.safeGetUniform("u_textureRotation").set((float)material.uvRotation());
-            shader.setSampler("Sampler0", this.getTexture(material));
-            shader.safeGetUniform("overlay").set((short)(this.context.packedOverlay() & '\uffff'), (short)(this.context.packedOverlay() >> 16 & '\uffff'));
-            shader.safeGetUniform("lighting").set((short)(this.context.packedLight() & '\uffff'), (short)(this.context.packedLight() >> 16 & '\uffff'));
-            shader.apply();
-            GL30.glBindVertexArray(mesh.renderedObject().vaoId());
-            GL11.glDrawElements(4, mesh.renderedObject().size(), 5125, 0L);
-            GL30.glBindVertexArray(0);
-            shader.clear();
-        }
-
-    }
 }

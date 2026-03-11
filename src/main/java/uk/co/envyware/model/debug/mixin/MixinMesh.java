@@ -106,23 +106,22 @@ public abstract class MixinMesh {
         }
 
         var indiceBuffer = glGenBuffers();
-        List<Integer> vertexBuffers = new ArrayList<>();
 
         glBindVertexArray(renderedObject.vaoId());
 
-        vertexBuffers.add(bindBufferData(0, 3, vertexPositions));
+        bindBufferData(0, 3, vertexPositions);
         glEnableVertexAttribArray(0);
 
-        vertexBuffers.add(bindBufferData(1, 2, vertexTextureCoordinates));
+        bindBufferData(1, 2, vertexTextureCoordinates);
         glEnableVertexAttribArray(1);
 
-        vertexBuffers.add(bindBufferData(2, 3, vertexNormals));
+        bindBufferData(2, 3, vertexNormals);
         glEnableVertexAttribArray(2);
 
-        vertexBuffers.add(bindBufferIntData(3, 4, vertexBoneIndices));
+        bindBufferIntData(3, 4, vertexBoneIndices);
         glEnableVertexAttribArray(3);
 
-        vertexBuffers.add(bindBufferData(4, 4, vertexBoneWeights));
+        bindBufferData(4, 4, vertexBoneWeights);
         glEnableVertexAttribArray(4);
 
         glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indiceBuffer);
