@@ -1,4 +1,5 @@
-#version 330
+#version 150
+#extension GL_ARB_explicit_attrib_location : enable
 
 #moj_import <light.glsl>
 #moj_import <fog.glsl>
