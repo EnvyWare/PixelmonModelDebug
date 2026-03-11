@@ -5,8 +5,7 @@
   "target": "@env(DEFAULT)",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
-    "MixinMesh",
-    "MixinSMDModelLoader"
+    "MixinMesh"
   ],
   "client": [
     "MixinAssimpRenderType"
